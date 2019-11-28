@@ -5,6 +5,7 @@ use Poluektov\CurrencyExchangeRate\CacheCurrency;
 use Poluektov\CurrencyExchangeRate\DBCurrency;
 use Poluektov\CurrencyExchangeRate\Interfaces\ApiInterface;
 use Poluektov\CurrencyExchangeRate\Interfaces\CacheInterface;
+use Poluektov\CurrencyExchangeRate\Interfaces\CurrencyFacadeInterface;
 use Poluektov\CurrencyExchangeRate\Interfaces\DBInterface;
 
 /**
@@ -12,7 +13,7 @@ use Poluektov\CurrencyExchangeRate\Interfaces\DBInterface;
  *
  * @package Poluektov\CurrencyExchangeRate\Facades
  */
-class CurrencyFacade
+class CurrencyFacade implements CurrencyFacadeInterface
 {
     /**
      * Source of exchange rate data.
@@ -46,7 +47,7 @@ class CurrencyFacade
      * @param string $secondCurrency Second currency code
      * @return float
      */
-    public function getExchangeRate(string $firstCurrency, string $secondCurrency) : ?float
+    public function getExchangeRate(string $firstCurrency, string $secondCurrency): ?float
     {
         return $this->source->getRate($firstCurrency, $secondCurrency);
     }

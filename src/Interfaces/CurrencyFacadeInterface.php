@@ -1,11 +1,11 @@
 <?php namespace Poluektov\CurrencyExchangeRate\Interfaces;
 
 /**
- * Interface CurrencySourceInterface
+ * Interface CurrencyFacadeInterface
  *
  * @package Poluektov\CurrencyExchangeRate\Interfaces
  */
-interface CurrencySourceInterface
+interface CurrencyFacadeInterface
 {
     /**
      * Get the exchange rate.
@@ -14,5 +14,5 @@ interface CurrencySourceInterface
      * @param string $secondCurrency Second currency symbol
      * @return float|null
      */
-    public function getRate(string $firstCurrency, string $secondCurrency): ?float;
+    public function getExchangeRate(string $firstCurrency, string $secondCurrency): ?float;
 }

@@ -10,14 +10,14 @@ use Poluektov\CurrencyExchangeRate\Interfaces\ApiInterface;
 class ApiCurrency extends CurrencySource
 {
     /**
-     *
+     * A API component that implements the ApiInterface.
      *
      * @var ApiInterface
      */
     protected $api;
 
     /**
-     * CacheCurrency constructor.
+     * ApiCurrency constructor.
      *
      * @param ApiInterface $api
      */
@@ -27,7 +27,7 @@ class ApiCurrency extends CurrencySource
     }
 
     /**
-     *
+     * Get the exchange rate from API.
      *
      * @param string $firstCurrency
      * @param string $secondCurrency
@@ -36,6 +36,7 @@ class ApiCurrency extends CurrencySource
     protected function getFromApi(string $firstCurrency, string $secondCurrency)
     {
         // Here you need to do API request sending.
+        // Use $this->api component to do this.
 
         // The current implementation is temporary.
         return rand(0, 1) ? rand(6667, 9999) / 100 : null;

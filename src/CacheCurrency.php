@@ -10,7 +10,7 @@ use Poluektov\CurrencyExchangeRate\Interfaces\CacheInterface;
 class CacheCurrency extends CurrencySource
 {
     /**
-     *
+     * A cache component that implements the CacheInterface.
      *
      * @var CacheInterface
      */
@@ -27,7 +27,7 @@ class CacheCurrency extends CurrencySource
     }
 
     /**
-     *
+     * Get the exchange rate from cache.
      *
      * @param string $firstCurrency
      * @param string $secondCurrency
@@ -36,6 +36,7 @@ class CacheCurrency extends CurrencySource
     protected function getFromCache(string $firstCurrency, string $secondCurrency)
     {
         // Here you need to do getting the data from the cache.
+        // Use $this->cache component to do this.
 
         // The current implementation is temporary.
         return rand(0, 1) ? rand(1, 3333) / 100 : null;
@@ -52,10 +53,12 @@ class CacheCurrency extends CurrencySource
     {
         $rate = $this->getFromCache($firstCurrency, $secondCurrency);
 
+        // If the data is not in the cache.
         if (!$rate) {
 
             $rate = parent::getRate($firstCurrency, $secondCurrency);
 
+            // Saving data in the cache.
             if ($rate) {
                 $this->setRate($firstCurrency, $secondCurrency, $rate);
             }
@@ -74,5 +77,6 @@ class CacheCurrency extends CurrencySource
     public function setRate(string $firstCurrency, string $secondCurrency, float $rate = 1): void
     {
         // Here you need to do saving the data to the cache.
+        // Use $this->cache component to do this.
     }
 }

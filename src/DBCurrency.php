@@ -10,14 +10,14 @@ use Poluektov\CurrencyExchangeRate\Interfaces\DBInterface;
 class DBCurrency extends CurrencySource
 {
     /**
-     *
+     * A database component that implements the DBInterface.
      *
      * @var DBInterface
      */
     protected $db;
 
     /**
-     * CacheCurrency constructor.
+     * DBCurrency constructor.
      *
      * @param DBInterface $db
      */
@@ -27,7 +27,7 @@ class DBCurrency extends CurrencySource
     }
 
     /**
-     *
+     * Get the exchange rate from database.
      *
      * @param string $firstCurrency
      * @param string $secondCurrency
@@ -36,6 +36,7 @@ class DBCurrency extends CurrencySource
     protected function getFromDB(string $firstCurrency, string $secondCurrency)
     {
         // Here you need to do getting data from DB.
+        // Use $this->db component to do this.
 
         // The current implementation is temporary.
         return rand(0, 1) ? rand(3334, 6666) / 100 : null;
@@ -52,10 +53,12 @@ class DBCurrency extends CurrencySource
     {
         $rate = $this->getFromDB($firstCurrency, $secondCurrency);
 
+        // If the data is not in the database.
         if (!$rate) {
 
             $rate = parent::getRate($firstCurrency, $secondCurrency);
 
+            // Saving data in the database.
             if ($rate) {
                 $this->setRate($firstCurrency, $secondCurrency, $rate);
             }
@@ -74,5 +77,6 @@ class DBCurrency extends CurrencySource
     public function setRate(string $firstCurrency, string $secondCurrency, float $rate = 1): void
     {
         // Here you need to do saving the data to the DB.
+        // Use $this->db component to do this.
     }
 }

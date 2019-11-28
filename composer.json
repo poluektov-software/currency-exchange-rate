@@ -2,6 +2,7 @@
     "name": "poluektov-software/currency-exchange-rate",
     "description": "Package to work with the currency exchange rate",
     "keywords": [
+        "design patterns",
         "chain of responsibility",
         "facade"
     ],

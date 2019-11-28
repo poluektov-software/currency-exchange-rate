@@ -3,6 +3,7 @@
 use Poluektov\CurrencyExchangeRate\Facades\CurrencyFacade;
 use Poluektov\CurrencyExchangeRate\Interfaces\ApiInterface;
 use Poluektov\CurrencyExchangeRate\Interfaces\CacheInterface;
+use Poluektov\CurrencyExchangeRate\Interfaces\CurrencyFacadeInterface;
 use Poluektov\CurrencyExchangeRate\Interfaces\DBInterface;
 
 /**
@@ -37,15 +38,15 @@ class ExampleClient
     /**
      * Client action.
      *
-     * @param CurrencyFacade $currency
+     * @param CurrencyFacadeInterface $currency
      */
-    public function example(CurrencyFacade $currency)
+    public function example(CurrencyFacadeInterface $currency)
     {
         // Injected facade for working with currencies.
         $rate = $currency->getExchangeRate('RUB', 'EUR')
-            ?: 'не удалось получить';
+            ?: 'could not get';
 
         // ...
-        echo("Курс указанной пары валют: $rate");
+        echo("Exchange rate of the specified currency pair: $rate");
     }
 }
